@@ -1,0 +1,15 @@
+src/server/public/bundle.js*
+node_modules
+.DS_Store
+.vscode
+*.log
+.stylelintignore
+.stylelintrc
+.eslintrc
+.lintstagedrc
+Procfile
+.editorconfig
+nodemon.json
+package-lock.json
+.husky
+.github

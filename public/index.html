@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <meta name="author" content="notes-board">
+		<meta name="description" content="notes app">
+    <meta name="keywords" content="notes, ideas, reminders">
+    <title>notes-board</title>
+    <link type="css" rel="stylesheet" href="./src/assets/index.css">
+    <link rel="manifest" src="./src/assets/app.webmanifest">
+
+		<!-- Android  -->
+		<meta name="theme-color" content="#000000">
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<!-- iOS -->
+		<meta name="apple-mobile-web-app-title" content="notes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<!-- Windows  -->
+		<meta name="msapplication-navbutton-color" content="#000000">
+		<meta name="msapplication-TileColor" content="#000000">
+
+		<!-- Pinned Sites  -->
+		<meta name="application-name" content="notes-board">
+		<meta name="msapplication-tooltip" content="notes app">
+		<meta name="msapplication-starturl" content="/">
+
+		<!-- Tap highlighting  -->
+		<meta name="msapplication-tap-highlight" content="no">
+
+		<!-- UC Mobile Browser  -->
+		<meta name="full-screen" content="yes">
+		<meta name="browsermode" content="application">
+
+    <link rel="shortcut icon" href="icons/" type="image/x-icon">
+    <link rel="icon" href="./icons/favicon.ico" type="image/x-icon">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="./icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="./icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png">
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="msapplication-config" content="./icons/browserconfig.xml">
+  <script defer src="bundle.js"></script></head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      Please enable JavaScript in order to use all functions of the app.
+    </noscript>
+    <script type="text/javascript">
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+              console.log('SW registered: ', registration);
+            })
+            .catch(registrationError => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+	  </script>
+  </body>
+</html>

@@ -1,0 +1,447 @@
+body {
+  position: absolute;
+  font-family: 'Courier', monospace;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+input {
+  margin: 0 auto;
+  font-family: monospace;
+  border: 0;
+  outline: 0;
+  resize: none;
+}
+
+input::placeholder {
+  color: #bbbaba;
+}
+
+button {
+  border: none;
+  background: #000;
+  color: #f5f5f5;
+}
+
+#root {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.added-note {
+  padding: 1.8rem;
+  cursor: text;
+}
+
+.dark-mode {
+  background: rgb(51, 9, 45);
+  min-height: 100vh;
+}
+
+.light-mode {
+  background: rgb(207, 158, 112);
+  min-height: 100vh;
+}
+
+.modal-submit-note {
+  position: absolute;
+  cursor: pointer;
+  font-size: 10px;
+  background: #000;
+  color: #f5f5f5;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  line-height: 15px;
+  width: 16px;
+  height: 16px;
+}
+
+.modal-toolbar {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  height: 16px;
+  background: #000;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.add-delete-icon {
+  position: absolute;
+  cursor: pointer;
+  font-size: 10px;
+  background: #fff;
+  color: #000;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  line-height: 15px;
+  width: 16px;
+  height: 16px;
+}
+
+.dark-mode .add-delete-icon {
+  background: #000;
+  color: #f5f5f5;
+}
+
+.submitted-note {
+  position: absolute;
+  background: #f5f5f5;
+  border: 1px solid #000;
+  touch-action: none;
+  user-select: none;
+  min-width: 100px;
+  min-height: 100px;
+  width: 250px;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+.submitted-note:active {
+  z-index: 2;
+}
+
+.edited-note {
+  z-index: 1;
+}
+
+.dark-mode .submitted-note {
+  background: #111;
+  border: 1px solid #f5f5f5;
+}
+
+.dark-mode textarea {
+  background: #111;
+  color: #f5f5f5;
+}
+
+.dark-mode span {
+  color: #f5f5f5;
+}
+
+.drag {
+  cursor: grab;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  height: 16px;
+  background: #fff;
+  border-bottom: 1px solid #333;
+}
+
+.dark-mode .drag {
+  background: #000;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.drag:active {
+  cursor: grabbing;
+}
+
+.modal-add-note {
+  position: relative;
+  background: #f5f5f5;
+  border: 1px solid #000;
+}
+
+/* .dark-mode .modal-add-note {
+  background: #111;
+  color: #f5f5f5;
+  border: 1px solid #f5f5f5;
+} */
+
+textarea {
+  padding: 1.25rem;
+  overflow: auto;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  resize: none;
+}
+
+/* .dark-mode textarea {
+  background-color: #111;
+  color: #f5f5f5;
+  border: 1px solid #f5f5f5;
+} */
+
+.note-text {
+  font-size: 0.8rem;
+  letter-spacing: 0.8px;
+  line-height: 1.5;
+}
+
+.note-title {
+  cursor: text;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  font-size: 0.75rem;
+  background: #fff;
+  color: #000;
+  letter-spacing: 1px;
+}
+
+.dark-mode .note-title {
+  background: #000;
+  color: #f5f5f5;
+}
+
+[data-title] {
+  position: absolute;
+  font: 12px 'Courier', monospace;
+  cursor: default;
+  top: 0px;
+  right: 2px;
+  font-weight: normal;
+  text-align: center;
+  line-height: 15px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  color: #000;
+}
+
+.dark-mode [data-title] {
+  background: #000;
+  color: #f5f5f5;
+}
+
+[data-title]::after {
+  position: absolute;
+  font-size: 0.5rem;
+  background: #000;
+  color: #f4f4f4;
+  padding: 5px;
+  top: 80%;
+  right: 0;
+}
+
+.dark-mode [data-title]::after {
+  background: #f5f5f5;
+  color: #000;
+}
+
+[data-title]:hover::after {
+  content: attr(data-title);
+  transition: all 0.1s ease 0.5s;
+}
+
+.smiley {
+  position: absolute;
+  color: #111;
+  stroke-width: 1.4;
+  font-size: 2.5rem;
+  padding: 1rem;
+  bottom: 0;
+  left: 0;
+}
+
+.dark-mode .smiley {
+  color: #f5f5f5;
+}
+
+.add-note {
+  cursor: pointer;
+  position: absolute;
+  color: #111;
+  stroke-width: 1.4;
+  font-size: 2.5rem;
+  padding: 1rem;
+  top: 0;
+  left: 0;
+}
+
+.dark-mode .add-note {
+  color: #f5f5f5;
+}
+
+.sun-moon {
+  cursor: pointer;
+  position: absolute;
+  color: #111;
+  stroke-width: 1.4;
+  font-size: 2.5rem;
+  padding: 1rem;
+  top: 0;
+  right: 0;
+}
+
+.dark-mode .sun-moon {
+  color: #f5f5f5;
+}
+
+.source-code {
+  position: absolute;
+  color: #111;
+  stroke-width: 1.4;
+  font-size: 2.5rem;
+  padding: 1rem;
+  bottom: 0;
+  right: 0;
+}
+
+.dark-mode .source-code {
+  color: #f5f5f5;
+}
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+  width: 500px;
+}
+
+.full-column {
+  width: 100%;
+}
+
+.half-column {
+  width: 50%;
+}
+
+.row-two {
+  display: flex;
+}
+
+.graph-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resize {
+  cursor: nw-resize;
+  position: absolute;
+  background: transparent;
+  right: 0px;
+  bottom: 0px;
+  width: 6px;
+  height: 6px;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+}
+
+.dark-mode .resize {
+  border-top: 1px solid #f5f5f5;
+  border-left: 1px solid #f5f5f5;
+}
+
+.modal-add-title {
+  cursor: text;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  font-size: 0.6rem;
+  background: #000;
+  color: #f5f5f5;
+  letter-spacing: 1px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 98;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.modal {
+  position: relative;
+  z-index: 99;
+  width: 100%;
+  max-height: 100%;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: -1.5rem;
+  right: 0;
+  padding: 5px;
+  border: 0;
+  -webkit-appearance: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* .modal-body {
+  padding: 1.25rem 1.5rem;
+  border-radius: 4px;
+  background-color: white;
+} */
+
+/* Overlay Transitions */
+.modal-transition-enter .overlay {
+  opacity: 0;
+}
+
+.modal-transition-enter-active .overlay {
+  opacity: 1;
+  transition: opacity 120ms;
+}
+
+.modal-transition-exit-active .overlay {
+  opacity: 1;
+}
+
+.modal-transition-exit-active .overlay {
+  opacity: 0;
+  transition: opacity 120ms;
+}
+
+/* Modal Transitions */
+.modal-transition-enter .modal {
+  opacity: 0;
+  transform: scale(0.95) translateY(-30px);
+}
+
+.modal-transition-enter-active .modal {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+  transition: opacity 120ms, transform 120ms;
+}
+
+.modal-transition-exit .modal {
+  opacity: 1;
+}
+
+.modal-transition-exit-active .modal {
+  opacity: 0;
+  transform: scale(0.95) translateY(-30px);
+  transition: opacity 200ms, transform 200ms;
+}
